@@ -2,9 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const user_route_1 = require("../module/users/user.route");
-const carService_route_1 = require("../module/carService/carService.route");
-const booking_route_1 = require("../module/booking/booking.route");
-const slots_routes_1 = require("../module/slots/slots.routes");
+const fitnessProducts_route_1 = require("../module/fitnessProducts/fitnessProducts.route");
 const router = (0, express_1.Router)();
 const modulesRoutes = [
     {
@@ -12,16 +10,8 @@ const modulesRoutes = [
         route: user_route_1.UserRoutes,
     },
     {
-        path: "/services",
-        route: carService_route_1.CarServiceRoutes,
-    },
-    {
-        path: "/slots",
-        route: slots_routes_1.slotRoutes,
-    },
-    {
-        path: "/",
-        route: booking_route_1.BookingRoutes,
+        path: "/products",
+        route: fitnessProducts_route_1.ProductsRoutes,
     },
 ];
 modulesRoutes.forEach((route) => router.use(route.path, route.route));
