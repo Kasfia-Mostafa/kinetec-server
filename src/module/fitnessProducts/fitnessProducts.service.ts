@@ -28,44 +28,47 @@ const getSingleProductFromDB = async (id: string) => {
 };
 
 //  Update product info
-// const updateProductByIdInDB = async (
-//   id: string,
-//   updateData: UpdatePhoneData
-// ) => {
-//   try {
-//     const updatedResult = await Phones.updateOne(
-//       { _id: id },
-//       { $set: updateData }
-//     );
+const updateProductByIdInDB = async (
+  id: string,
+  updateData: TProducts
+) => {
+  try {
+    // Update the product with the provided ID
+    const updatedResult = await Products.updateOne(
+      { _id: id },
+      { $set: updateData }
+    );
 
-//     if (updatedResult.matchedCount === 0) {
-//       throw new Error("No phone found with the provided ID");
-//     }
+    // Check if a product with the given ID was found and updated
+    if (updatedResult.matchedCount === 0) {
+      throw new Error("No products found with the provided ID");
+    }
 
     // Fetch the updated document
-//     const updatedPhone = await Phones.findById(id).lean();
+    const updatedProduct = await Products.findById(id).lean();
 
-//     if (!updatedPhone) {
-//       throw new Error("Failed to fetch the updated phone");
-//     }
+    if (!updatedProduct) {
+      throw new Error("Failed to fetch the updated product");
+    }
 
-//     return updatedPhone;
-//   } catch (error) {
-//     console.error("Error updating phone data:", error);
-//     throw error;
-//   }
-// };
+    return updatedProduct;
+  } catch (error) {
+    console.error("Error updating product data:", error);
+    throw error;
+  }
+};
+
 
 // Delete product
-// const deleteProductFromDB = async (id: string) => {
-//   const result = await Phones.deleteOne({ _id: id });
-//   return result;
-// };
+const deleteProductFromDB = async (id: string) => {
+  const result = await Products.deleteOne({ _id: id });
+  return result;
+};
 
 export const ProductsServices = {
   createProductsInDB,
   getAllOrSearchProductsFromDB,
   getSingleProductFromDB,
-//   updateProductByIdInDB,
-//   deleteProductFromDB,
+  updateProductByIdInDB,
+  deleteProductFromDB,
 };

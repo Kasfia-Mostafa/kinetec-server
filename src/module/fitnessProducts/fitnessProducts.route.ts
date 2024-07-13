@@ -3,7 +3,6 @@ import { productValidation } from "./fitnessProducts.validation";
 import { ProductsControllers } from "./fitnessProducts.controller";
 import validateRequest from "../../middleware/validateRequest";
 
-
 const router = express.Router();
 
 router.post(
@@ -14,14 +13,7 @@ router.post(
 
 router.get("/", ProductsControllers.getAllOrSearchedProducts);
 router.get("/:productId", ProductsControllers.getSingleProduct);
-
-// router.get("/:slug", MovieControllers.getMovieBySlug);
-// router.get("/", MovieControllers.getAllMovies);
-// router.post(
-//   "/:slug/review",
-//   validateRequest(ReviewValidation.addReviewSchema),
-//   ReviewControllers.addReview
-// );
-
+router.delete("/:productId", ProductsControllers.deleteProduct);
+router.put('/:productId', ProductsControllers.updateProductService);
 
 export const ProductsRoutes = router;

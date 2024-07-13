@@ -37,20 +37,39 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
-// const updateCarService = catchAsync(async (req, res) => {
-//   const { carId } = req.params;
-//   const result = await CarServices.updateCarServiceIntoDB(carId, req.body);
+const updateProductService = catchAsync(async (req, res) => {
+  const { productId } = req.params;
+  const result = await ProductsServices.updateProductByIdInDB(productId, req.body);
 
-//   res.status(200).json({
-//     success: true,
-//     message: "Car service updated successfully!",
-//     data: result,
-//   });
-// });
+  res.status(200).json({
+    success: true,
+    message: "Product updated successfully!",
+    data: result,
+  });
+});
+
+const deleteProduct = catchAsync(async (req, res) => {
+  const { productId } = req.params;
+  const result = await ProductsServices.deleteProductFromDB(productId);
+  
+  if (result.deletedCount === 0) {
+    return res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      statusCode: httpStatus.NOT_FOUND,
+      message: "Product not found",
+    });
+  }
+  res.status(httpStatus.NO_CONTENT).json({
+    success: true,
+    statusCode: httpStatus.NO_CONTENT,
+    message: "Product deleted successfully",
+  });
+});
 
 export const ProductsControllers = {
   createProducts,
   getAllOrSearchedProducts,
   getSingleProduct,
-  //   updateCarService,
+    updateProductService,
+  deleteProduct
 };
