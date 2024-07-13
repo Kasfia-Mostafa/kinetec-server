@@ -12,9 +12,7 @@ app.use(cors());
 app.use("/api", router);
 
 const test = (req: Request, res: Response) => {
-  // Promise.reject()
-  const a = 10;
-  res.send(a);
+  res.send("Response is 10");
 };
 
 app.get("/", test);

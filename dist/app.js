@@ -13,9 +13,7 @@ app.use((0, cors_1.default)());
 // Routes
 app.use("/api", router_1.default);
 const test = (req, res) => {
-    // Promise.reject()
-    const a = 10;
-    res.send(a);
+    res.send("Response is 10");
 };
 app.get("/", test);
 exports.default = app;
