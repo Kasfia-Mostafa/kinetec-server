@@ -6,5 +6,5 @@ export interface UserOrders {
   city: string;
   state: string;
   zipCode: string;
-  payment: number;
+  payment: string;
 }

@@ -12,10 +12,7 @@ export const userOrderSchema = z.object({
     city: z.string().min(1, "City is required"),
     state: z.string().min(1, "State is required"),
     zipCode: z.string().min(1, "Zip code is required"),
-    payment: z
-      .number()
-      .nonnegative("Payment must be a positive number")
-      .int("Payment must be an integer"),
+    payment: z.string().nonempty("Payment is required"),
   }),
 });
 

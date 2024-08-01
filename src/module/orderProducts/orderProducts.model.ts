@@ -10,7 +10,7 @@ const userOrderSchema = new Schema<UserOrders>(
     city: { type: String, required: true, trim: true },
     state: { type: String, required: true, trim: true },
     zipCode: { type: String, required: true, trim: true },
-    payment: { type: Number, required: true, min: 0 },
+    payment: { type: String , required: true,trim: true },
   },
   { timestamps: true }
 ); 
