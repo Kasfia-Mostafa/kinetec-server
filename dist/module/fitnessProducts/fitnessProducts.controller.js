@@ -76,5 +76,5 @@ exports.ProductsControllers = {
     getAllOrSearchedProducts,
     getSingleProduct,
     updateProductService,
-    deleteProduct
+    deleteProduct,
 };

@@ -10,7 +10,7 @@ const productsSchema = new mongoose_1.Schema({
     quantity: { type: Number, required: true, min: 0 },
     rating: { type: Number, required: true, min: 0, max: 5 },
     description: { type: String, required: true, trim: true },
-    category: { type: String, required: true, trim: true }
+    category: { type: String, required: true, trim: true },
 });
 // Create the Product model
-exports.Products = (0, mongoose_1.model)('Products', productsSchema);
+exports.Products = (0, mongoose_1.model)("Products", productsSchema);
