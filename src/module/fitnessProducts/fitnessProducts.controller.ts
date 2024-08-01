@@ -5,6 +5,7 @@ import sendResponse from "../../utils/sendResponse";
 
 const createProducts = catchAsync(async (req, res) => {
   const result = await ProductsServices.createProductsInDB(req.body);
+
   // console.log(result)
   res.status(200).json({
     success: true,
@@ -39,7 +40,10 @@ const getSingleProduct = catchAsync(async (req, res) => {
 
 const updateProductService = catchAsync(async (req, res) => {
   const { productId } = req.params;
-  const result = await ProductsServices.updateProductByIdInDB(productId, req.body);
+  const result = await ProductsServices.updateProductByIdInDB(
+    productId,
+    req.body
+  );
 
   res.status(200).json({
     success: true,
@@ -51,7 +55,7 @@ const updateProductService = catchAsync(async (req, res) => {
 const deleteProduct = catchAsync(async (req, res) => {
   const { productId } = req.params;
   const result = await ProductsServices.deleteProductFromDB(productId);
-  
+
   if (result.deletedCount === 0) {
     return res.status(httpStatus.NOT_FOUND).json({
       success: false,
@@ -70,6 +74,6 @@ export const ProductsControllers = {
   createProducts,
   getAllOrSearchedProducts,
   getSingleProduct,
-    updateProductService,
-  deleteProduct
+  updateProductService,
+  deleteProduct,
 };

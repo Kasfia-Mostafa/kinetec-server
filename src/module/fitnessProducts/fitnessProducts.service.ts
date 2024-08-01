@@ -1,7 +1,6 @@
 import { TProducts } from "./fitnessProducts.interface";
 import { Products } from "./fitnessProducts.model";
 
-
 const createProductsInDB = async (productsData: TProducts) => {
   // console.log(productsData)
   const result = await Products.create(productsData);
@@ -28,10 +27,7 @@ const getSingleProductFromDB = async (id: string) => {
 };
 
 //  Update product info
-const updateProductByIdInDB = async (
-  id: string,
-  updateData: TProducts
-) => {
+const updateProductByIdInDB = async (id: string, updateData: TProducts) => {
   try {
     // Update the product with the provided ID
     const updatedResult = await Products.updateOne(
@@ -57,7 +53,6 @@ const updateProductByIdInDB = async (
     throw error;
   }
 };
-
 
 // Delete product
 const deleteProductFromDB = async (id: string) => {
